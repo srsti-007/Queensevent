@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QueensEvent - Premium Event Booking Platform</title>
+    <!-- Linking External Lavender CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">👑 QueensEvent</a>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-item active" data-target="heroSection">Home</a></li>
+            <li><a href="#eventsSection" class="nav-item" data-target="eventsSection">Explore Events</a></li>
+            <li><a href="#eventsSection" class="nav-item" data-target="eventsSection" id="navCategoriesBtn">Categories</a></li>
+            <li><a href="#footerSection" class="nav-item" data-target="footerSection">Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO BANNER SECTION -->
+    <header class="hero" id="heroSection">
+        <div class="hero-content animated-element fade-in-up">
+            <h1>Discover Premium Experiences</h1>
+            <p>Explore and instantly register for curated live concerts, professional development seminars, design workshops, and cultural festivals near you.</p>
+            <button class="btn" id="browseBtn">Browse Upcoming Events</button>
+        </div>
+    </header>
+
+    <!-- MAIN EVENT INTERACTION HUB -->
+    <main class="main-container" id="eventsSection">
+        
+        <!-- SEARCH & LIVE FILTER CONTROLS -->
+        <div class="controls-container animated-element fade-in-up">
+            <div class="filter-row">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" placeholder="🔍 Search event titles, venues, or keywords...">
+                </div>
+                <div class="filter-wrapper">
+                    <select id="categoryFilter">
+                        <option value="all">✨ All Event Types</option>
+                        <option value="Concert">Concerts & Shows</option>
+                        <option value="Seminar">Seminars & Keynotes</option>
+                        <option value="Workshop">Hands-on Workshops</option>
+                        <option value="Festival">Community Festivals</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- QUICK LOCATION FILTER PILLS -->
+            <div class="location-filters-wrapper">
+                <span class="location-filter-label">📍 Popular Cities:</span>
+                <div class="location-pills" id="locationPillsContainer">
+                    <button class="location-pill active" data-city="all">All Locations</button>
+                    <button class="location-pill" data-city="Bangalore">Bangalore</button>
+                    <button class="location-pill" data-city="Mumbai">Mumbai</button>
+                    <button class="location-pill" data-city="Pune">Pune</button>
+                    <button class="location-pill" data-city="Delhi-NCR">Delhi-NCR</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- EVENTS RENDER GRID -->
+        <div class="section-header animated-element fade-in-up">
+            <h2 class="section-title">Upcoming Schedule</h2>
+        </div>
+        
+        <div class="events-grid" id="eventsGrid">
+            <!-- Programmatically injected using Mock JSON dataset via script.js -->
+        </div>
+    </main>
+
+    <!-- INTERACTIVE EVENT DETAILS & REGISTRATION MODAL -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal-container">
+            <span class="close-modal-btn" id="closeModalBtn">&times;</span>
+            
+            <div id="modalHeroImage" class="modal-hero-banner"></div>
+            
+            <div class="modal-body-content">
+                <span class="event-badge" id="modalBadge">Category</span>
+                <h2 id="modalTitle">Event Title Placeholder</h2>
+                
+                <p id="modalDescription">Full detailed overview context goes here.</p>
+                
+                <h4 class="modal-section-title">📅 Logistics & Information</h4>
+                <div class="details-grid">
+                    <div><strong>Date & Time:</strong> <span id="modalDateTime">Loading...</span></div>
+                    <div><strong>City Location:</strong> <span id="modalCity">Loading...</span></div>
+                    <div><strong>Location/Venue:</strong> <span id="modalVenue">Loading...</span></div>
+                    <div><strong>Organizer:</strong> <span id="modalOrganizer">Queens Corporate Management</span></div>
+                    <div><strong>Ticket Price:</strong> <span id="modalPrice">₹0</span></div>
+                </div>
+
+                <h4 class="modal-section-title">🎫 Ticket Registration Form</h4>
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Jane Doe" required>
+                            <div class="error-message" id="nameError">Full name is required (Min. 2 characters).</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">Email Address</label>
+                            <input type="email" id="emailAddress" placeholder="jane@example.com" required>
+                            <div class="error-message" id="emailError">Please enter a valid email address.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ticketQuantity">Pass Quantity</label>
+                            <select id="ticketQuantity">
+                                <option value="1">1 General Admission Pass</option>
+                                <option value="2">2 General Admission Passes</option>
+                                <option value="3">3 General Admission Passes</option>
+                                <option value="4">4 General Admission Passes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" placeholder="98765 43210">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn block-btn">Confirm Registration & Issue Tickets</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- APPLICATION FOOTER -->
+    <footer id="footerSection">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo" style="color: #ffffff;">QueensEvent</div>
+                <p>Connecting people through inspiring live experiences.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Support Helpdesk</a>
+                <a href="#">Developer API</a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            &copy; 2026 QueensEvent Platform Inc.Let's Jam. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- Linking External Logic Engine -->
+    <script src="script.js"></script>
+</body>
+</html>
